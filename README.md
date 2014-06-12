@@ -17,4 +17,4 @@ Back-end Technology:
 PHP, JSON
 
 Other:
-Middleman, OSX, Minification
+Middleman, Minification, OSX, Amazon EC2
