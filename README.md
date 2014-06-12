@@ -1,4 +1,4 @@
-Author: Anton Agana
+Author: Anton
 
 Description:
 This web application shows information for any of the 50 US states.
@@ -11,10 +11,13 @@ The user can then choose which one of the resulting items to be displayed.
 
 
 Front-end Technology:
-JavaScript, AJAX, HTML/HAML, CSS/SCSS, Responsive Design
+
+Raw JavaScript (i.e., no jQuery), AJAX, HTML/HAML, CSS/SCSS, Responsive Design
 
 Back-end Technology:
+
 PHP, JSON
 
 Other:
+
 Middleman, OSX, Minification
