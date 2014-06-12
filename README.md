@@ -10,14 +10,11 @@ The user can then choose which one of the resulting items to be displayed.
 
 
 
-Front-end Technology:
-
+Front-end Technology: 
 Raw JavaScript (i.e., no jQuery), AJAX, HTML/HAML, CSS/SCSS, Responsive Design
 
-Back-end Technology:
-
+Back-end Technology: 
 PHP, JSON
 
 Other:
-
 Middleman, OSX, Minification
