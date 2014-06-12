@@ -1,0 +1,47 @@
+---
+title: US States
+---
+
+/Navigation Menu
+#headerBackground
+  %header.mainHeader
+    = link_to image_tag('logo.png', alt:'Logo'), '#'
+    %nav.mainNav
+      %ul
+        %li= link_to 'SAMPLE', '#'
+        %li
+          = link_to 'DROPDOWN', '#'
+          %ul
+            /Looping elements for the dropdown sub-menu
+            - ['Users', 'Staff', 'Managers', 'Delivery'].each do |i|
+              %li= link_to i, '#'
+
+.mainContent
+  /Left side of the app
+  .leftfield 
+    .searchEntry
+      .labelName Enter US State:
+      %input#searchInput{ name:'searchInputName', type:'text', value:'' }
+      %ul#result
+
+    .stateInfo
+      %h1#stateName Alabama
+      = image_tag('./flags/alabama.flag.png', id:'flag', alt:'Flag', title:'Flag')
+      %ul
+        %li
+          %span.titleList Capital:
+          %span#capital Montgomery
+        %li
+          %span.titleList Area:
+          %span#area_sqmi 52,420.07 sq mi
+        %li
+          %span.titleList Population (2013):
+          %span#population 4,833,722
+
+  //right side of the app
+  = image_tag('./maps/alabama.map.png', id:'map', alt:'Map', title:'Map')
+
+
+//adding stylesheets and javascript at the bottom
+= stylesheet_link_tag 'normalize.css', 'custom.css'
+= javascript_include_tag 'all.js'
