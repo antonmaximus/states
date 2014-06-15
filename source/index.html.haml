@@ -42,6 +42,11 @@ title: US States
   = image_tag('./maps/alabama.map.png', id:'map', alt:'Map', title:'Map')
 
 
+#info.mainContent
+  %a{ href: "https://github.com/ayjaygit/states#readme", target: "_blank" } |
+    Learn More about the Technologies demonstrated.
+
 //adding stylesheets and javascript at the bottom
 = stylesheet_link_tag 'normalize.css', 'custom.css'
-= javascript_include_tag 'all.js'
+= javascript_include_tag   'controllers.js', 'models.js'
+/ all.js'
