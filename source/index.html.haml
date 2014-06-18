@@ -14,23 +14,34 @@ title: US States
           %ul
             /Looping elements for the dropdown sub-menu
             - ['Users', 'Staff', 'Managers', 'Delivery'].each do |i|
-              %li= link_to i, '#'
+              %li= link_to i, '#', data: { tabindex: -1 }
 
 .mainContent
   /Left side of the app
   .leftfield 
-    .searchEntry
-      .labelName Enter US State:
-      %input#searchInput{ name:'searchInputName', type:'text', value:'' }
-      %ul#result
-
+    %fieldset.searchEntry
+      %legend Enter U.S. State
+      /Using container/cell for button activity fut
+      .container
+        .cell
+          %input#searchInput{ name:'searchInputName', type:'text',  |
+            maxlength:48, tabindex:1 }
+          /Initial values are for JavaScript manipulation
+          #clearOption{ style:"display: none; opacity: 0;", tabindex:2 }
+          %ul#result
+      
+    %h1#noState
     .stateInfo
-      %h1#stateName Alabama
-      = image_tag('./flags/alabama.flag.png', id:'flag', alt:'Flag', title:'Flag')
+      %h1#state Alabama
+      = image_tag('./flags/alabama.flag.png', id:'flag', alt:'Alabama flag',
+          title:'Alabama flag')
       %ul
         %li
           %span.titleList Capital:
           %span#capital Montgomery
+        %li
+          %span.titleList Nickname:
+          %span#nickname Yellowhammer State
         %li
           %span.titleList Area:
           %span#area_sqmi 52,420.07 sq mi
@@ -39,7 +50,8 @@ title: US States
           %span#population 4,833,722
 
   //right side of the app
-  = image_tag('./maps/alabama.map.png', id:'map', alt:'Map', title:'Map')
+  = image_tag('./maps/alabama.map.png', id:'map', alt:'Alabama map',
+      title:'Alabama map')
 
 
 #info.mainContent
@@ -48,6 +60,5 @@ title: US States
 
 //adding stylesheets and javascript at the bottom
 = stylesheet_link_tag 'normalize.css', 'custom.css'
-= javascript_include_tag 'custom.js'
-/ 'controllers.js', 'models.js'
-/ all.js'
+/ = javascript_include_tag 'models.js', 'viewControllers.js', 'controllers.js'
+= javascript_include_tag  'all.js'

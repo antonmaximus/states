@@ -1,31 +1,46 @@
 @charset "utf-8";
 
 $imageFolder: '../images/';
-$primaryColor: #858788;
+$greyText: #858788;
+$blackText: #555;
+$greenHighlight: #01c4c6;
 
+
+/************************************
+********** General Content **********
+*************************************/ 
 body{
   background-color: #FFF; 
   clear: both; 
   margin: 0 auto; 
 }
   
+$link: #028385;
+a {
+  outline: 0; 
+  color: $greyText; 
+  text-decoration: none;
+  border-bottom: 2px dotted $link;
+  transition: border-bottom 2s cubic-bezier(0.05, 0.95, 0.05, 0.95); 
 
-/* ===============
-=== Navigation ===
-==================*/  
+  &:hover, &:active {
+    border-bottom: 2px solid #fafafa;
+  }
+
+}
+
+
+/***************************
+********** Header **********
+****************************/ 
+$headerGradientStart: #5b6065;
+$headerGradientEnd: #1e242a;
+
+$dropdownGradientStart: #1f252c;
+$dropdownGradientEnd: #000;
+
 #headerBackground {
-   /* Fallback to support IE9  */
-  background: url($imageFolder + 'bkup.png') no-repeat center bottom ;
-  /* Safari 4-5, Chrome 1-9 */
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1e242a), to(#5b6065));
-  /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(top, #5b6065, #1e242a);
-  /* Firefox 3.6+ */
-  background: -moz-linear-gradient(top, #5b6065, #1e242a);
-  /* IE 10 */
-  background: -ms-linear-gradient(top, #5b6065, #1e242a);
-  /* Opera 11.10+ */
-  background: -o-linear-gradient(top, #5b6065, #1e242a);
+  background: linear-gradient(to bottom, $headerGradientStart, $headerGradientEnd);
 }
 
 .mainHeader {
@@ -34,8 +49,7 @@ body{
   margin: 0 auto; 
   font-size: 17px; 
   font-family: arial; 
-  color: $primaryColor;
-
+  color: $greyText;
 }
 
 .mainHeader img {
@@ -59,26 +73,17 @@ body{
   float: left; 
 }
   
+
 .mainNav ul li ul{
   position: relative;
+  z-index: 10;
   display: none; 
   margin-top: 22px; 
   padding: 0 0 6px 0;
   line-height: 34px;  
-  box-shadow: 0px 4px 10px $primaryColor; 
+  box-shadow: 0px 4px 10px $greyText; 
   
-   /* Fallback */
-  background: #1f252c;
-  /* Safari 4-5, Chrome 1-9 */
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#000), to(#1f252c));
-  /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(top, #1f252c, #000);
-  /* Firefox 3.6+ */
-  background: -moz-linear-gradient(top, #1f252c, #000);
-  /* IE 10 */
-  background: -ms-linear-gradient(top, #1f252c, #000);
-  /* Opera 11.10+ */
-  background: -o-linear-gradient(top, #1f252c, #000);
+  background: linear-gradient(to bottom, $dropdownGradientStart, $dropdownGradientEnd);
 }
 
 .mainNav li:hover>ul {
@@ -111,29 +116,6 @@ body{
   font-weight: bold;
 }
 
-
-/* ===========
-===Anchors ===
-=============*/ 
-a {
-  outline: 0; 
-  text-decoration: none;
-  text-shadow: 1px 1px #000; 
-}
-
-a.logo:link, a.logo:hover {
-  border-style:none;
-}
-  
-a:link, a:visited {
-  color: $primaryColor; 
-}
-
-a:hover, a:active {
-  color: #FFF ;
-}
-
-
 .mainNav > ul > li > a {
   padding: 0 15px ; 
 }
@@ -149,74 +131,159 @@ a:hover, a:active {
 }
 
 
-/* ===========
-===Content ===
-=============*/ 
+.mainHeader a {
+outline: 0; 
+text-decoration: none;
+text-shadow: 1px 1px #000; 
+border-bottom: 0;
+
+
+  &:link, &:visited {
+    color: $greyText; 
+  }
+
+  &:hover, &:active {
+  color: #FFF ;
+  }
+}
+
+a.logo:link, a.logo:hover {
+  border-style:none;
+}
+  
+
+/*****************************
+**********  Content **********
+******************************/  
 .mainContent {
   width: 1024px;
   margin: 0 auto; 
   margin-top: 20px;
   
   font-family: arial; 
-  color: $primaryColor;
+  color: $blackText;
 }
 
 
 .searchEntry {
-  color: #d5d5d5; 
   width: 300px; 
   height: 80px; 
   padding: 20px; 
   margin-right: 40px;
-  z-index: 0;
-
-   /* Fallback to support IE9 */
-  background: url($imageFolder + 'backgroundStrip.png') repeat-x center bottom ;
-  background-size: auto 100%;
-  /* Safari 4-5, Chrome 1-9 */
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1e242a), to(#5b6065));
-  /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(top, #5b6065, #1e242a);
-  /* Firefox 3.6+ */
-  background: -moz-linear-gradient(top, #5b6065, #1e242a);
-  /* IE 10 */
-  background: -ms-linear-gradient(top, #5b6065, #1e242a);
-  /* Opera 11.10+ */
-  background: -o-linear-gradient(top, #5b6065, #1e242a);
-}
-
-.labelName {
-  padding-bottom: 5px;
+  border-color: #999;
 }
 
 
-#searchInput {
-  padding: 0 0 0 23px; 
-  width: 260px; 
-  height: 40px; 
-  color: #d5d5d5;
-  font-size: 16px; 
+/********************************************
+********** Search Input and Button **********
+*********************************************/
+$searchIcon: $imageFolder + 'searchIcon2.png' ;
 
-  background: url($imageFolder + 'searchIconGoogle.png') no-repeat  1% center;
-  background-color: #686d72; 
-  
-  
-  border: 2px solid #333b41; 
-  
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  
+button,
+input[type="text"] {
+    font-size: 0.875em;
+    height: 40px;
+    margin: 0;
+    vertical-align: middle;
+    color: $blackText;
 }
+
+input[type="text"] {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;    
+    padding: 0 4px;
+    width: 100%;
+    padding: 0 0 0 23px; 
+    background: url($searchIcon) no-repeat  1% center;
+    background-size: auto 45%;
+}
+
+button[type="text"] {
+  width: 100%;
+  z-index: 3;
+  position: relative;
+}
+
+
+.container {
+  display: table;
+  width: 100%;
+}
+
+.cell {
+  display: table-cell;
+}
+
+
+/*********************************
+********** Clear Option **********
+**********************************/
+$closeIcon: $imageFolder + 'closeIcon4.png';
+$iconSize: 100% auto;
+$outOfView: -40px;
+$inView: 4px;
+
+.cell:first-child {
+  position: relative;
+}
+
+
+#clearOption {
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  cursor: pointer;
+  top: 10px;
+
+  background: url($closeIcon) no-repeat;
+  background-size: $iconSize;
+
+  right: $inView;
+}
+
+#clearOption.clearable {
+  animation: moveIn 0.75s;
+  right: $inView;
+  display: inline-block;
+
+}
+
+@keyframes moveIn {
+    from {
+      right: $outOfView;
+      display: inline-block;
+    }
+    to {
+      right: $inView;
+      display: inline-block;
+    }
+}
+
+
+#clearOption.removeIcon {
+  animation: moveOut 0.9s;
+  display: inline-block;
+  right: $outOfView;
+}
+@keyframes moveOut {
+    from { right: $inView; }
+    to { right: $outOfView;}
+}
+
+
+/************************************
+********** Search Resulsts **********
+*************************************/
 #result {
   display: none; 
-  margin: 0 0 0 18px;
+  margin: 0;
   padding: 5px; 
   list-style: none;
   position: relative; 
-  width: 300px; 
-  box-shadow: 0px 4px 10px $primaryColor; 
-   background-color: #FFF;
+  box-shadow: 0px 4px 10px $greyText; 
+  background-color: #FFF;
 }
 
 #result li {
@@ -228,10 +295,15 @@ a:hover, a:active {
 
 #highlighted, 
 #result li:hover {
-  background-color: #01c4c6; /*#d2e2e4; */
+  background-color: $greenHighlight; /*#d2e2e4; */
   cursor: pointer;
 }
 
+
+
+/*******************************
+********** State Info **********
+********************************/
 .stateInfo {
   padding-top: 20px;
 }
@@ -259,7 +331,7 @@ a:hover, a:active {
   height: 35px;
   /*display: inline-block;*/
   margin-left: 6px;
-  box-shadow: 0px 3px 10px $primaryColor; 
+  box-shadow: 0px 3px 10px $greyText; 
 }
 
 #map {
@@ -267,7 +339,7 @@ a:hover, a:active {
   display: inline-block;
   vertical-align: top;
   margin-right: 60px;
-  box-shadow: 0px 4px 10px $primaryColor; 
+  box-shadow: 0px 4px 10px $greyText; 
 }
 
 .titleList {
@@ -284,30 +356,21 @@ a:hover, a:active {
 }
 
 #info {
-  font-size: 13px;
+  font-size: 15px;
 }
 
-.tech {
-  list-style-type: none;
-  padding: 0;
-  display: inline-block;
-  vertical-align: top;
-  width: 20%;
+.reveal {
+  display: block;
+}
 
-  li {
-    padding-left: 5px; 
-  }
+.noShow {
+  display: none;
 }
 
 
-.text {
-  padding-left: 13px;
-}
-
-/* ===============
-=== Responsive ===
-==================*/ 
-
+/*******************************
+********** Responsive **********
+********************************/
 @media screen and (max-width: 940px) {
   .mainContent {
     width: auto;
@@ -323,7 +386,6 @@ a:hover, a:active {
     margin-top: 10px;
     margin-right: 0;
     width: 550px;
-    /*margin-top: 0;*/
     display: block;
 
   }
@@ -357,7 +419,4 @@ a:hover, a:active {
   }
 
 }
-
-
-
 
