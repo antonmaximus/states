@@ -1,5 +1,6 @@
 
 ;(function(global) {
+  'use strict';
   global.models = global.models || {};
 
   global.models.SearchResult = SearchResult;
@@ -25,6 +26,6 @@
     return this.state.substr(0, index) + '<strong>' + 
            this.state.substr(index, key.length) + '</strong>' + 
            this.state.substr(index + key.length) ;
-  }
+  };
   
 })(this);

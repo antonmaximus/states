@@ -1,4 +1,8 @@
+/*global document: false, console: false, XMLHttpRequest: false */
+/*global setInterval: false, clearInterval: false */
+
 ;(function(global) {
+'use strict';
  var models = global.models = global.models || {};
 
 /*******************************************
@@ -130,22 +134,12 @@ function revealSearchResults(key) {
   }
 }
 
-function revealNoStatesFound() {
-  var key = document.getElementById("searchInput").value,
-      noState = document.getElementById("noState");
-
-  noState.innerHTML = "\'" + key + "\' is not a US state.";
-  noState.className = "reveal";
-
-  document.getElementById("map").style.display = "none";
-  document.getElementsByClassName("stateInfo")[0].className += " noShow";
-}
 /**************************************************
 ************* Search Input Controller *************
 ***************************************************/
 
 function storeSearchResults(jsonObj) {
-  var instance;
+  var instance, i;
   models.searchResults = []; //flush out old info
   for (i = 0; i < jsonObj.data.length; i += 1) {
     instance = new models.SearchResult(jsonObj.data[i]);
