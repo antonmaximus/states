@@ -1,3 +1,6 @@
+;(function(global) {
+ var models = global.models = global.models || {};
+
 /*******************************************
 ************* Helper Functions *************
 ********************************************/
@@ -8,15 +11,6 @@ function clearDisplayedSearchResults() {
     ul.removeChild(ul.firstChild); //this also removes any event listeners
   }
   document.getElementById("result").style.display = "none";
-}
-
-function boldStringAtLocationHelper(origKey, origStr) {
-  var key = origKey.toLowerCase(),
-      index = origStr.toLowerCase().indexOf(key);
-
-  return origStr.substr(0, index) + '<strong>' + 
-          origStr.substr(index, key.length) + '</strong>' + 
-          origStr.substr(index + key.length) ;
 }
 
 //Use browser's functionality to strip HTML tags
@@ -46,7 +40,7 @@ function getSiblingHelper(highlighted, arrowkey) {
 }
 
 //fadeType is either "fade-in" or "fade-out"
-function fadeToggleHelper(element, fadeType) {
+function fadeHelper(element, fadeType) {
   var initial, end, timer;
   if (fadeType == 'fade-in') {
     element.style.display = '';
@@ -83,9 +77,9 @@ function revealDataFromSelectedKey(preProcessedKey) {
 
 
   if (document.getElementById("state").innerHTML != key) {
-    for(x=0; x < window.searchResults.length; x+=1){
-      if(window.searchResults[x].state == key) {
-        matchingObj = window.searchResults[x];
+    for(x=0; x < models.searchResults.length; x+=1){
+      if(models.searchResults[x].state == key) {
+        matchingObj = models.searchResults[x];
       }
     }
 
@@ -120,17 +114,18 @@ function revealSearchResults(key) {
   clearDisplayedSearchResults();
 
   ul = document.getElementById("result");
-  for (i = 0;  i < window.searchResults.length; i += 1) {
+  for (i = 0;  i < models.searchResults.length; i += 1) {
     li = document.createElement("li");
 
-    boldStr = boldStringAtLocationHelper(key, window.searchResults[i].state);
+    // boldStr = boldStringAtLocationHelper(key, models.searchResults[i].state);
+    boldStr = models.searchResults[i].addHTMLEmphasis(key);
     li.innerHTML = boldStr;
     li.addEventListener("click", mouseClickHandler, false);
     li.addEventListener("mouseover", removeOrigHighlightOnHoverHandler, false);
     ul.appendChild(li);
   }
 
-  if (window.searchResults.length > 0) {
+  if (models.searchResults.length > 0) {
     document.getElementById("result").style.display = "block";
   }
 }
@@ -151,10 +146,10 @@ function revealNoStatesFound() {
 
 function storeSearchResults(jsonObj) {
   var instance;
-  window.searchResults = []; //flush out old info
+  models.searchResults = []; //flush out old info
   for (i = 0; i < jsonObj.data.length; i += 1) {
-    instance = new searchResult(jsonObj.data[i]);
-    window.searchResults.push(instance);
+    instance = new models.SearchResult(jsonObj.data[i]);
+    models.searchResults.push(instance);
   }
 }
 
@@ -163,7 +158,7 @@ function enableClearIcon() {
    // elem.className = "clearable";
    if (elem.style.display != '') {
     // fadeInHelper(elem);
-    fadeToggleHelper(elem, 'fade-in');
+    fadeHelper(elem, 'fade-in');
   }
 }
 
@@ -171,7 +166,7 @@ function disableClearIcon() {
   var elem = document.getElementById("clearOption");
   // elem.className = "removeIcon";
   // fadeOutHelper(elem);
-    fadeToggleHelper(elem, 'fade-out');
+    fadeHelper(elem, 'fade-out');
 
 }
 
@@ -315,3 +310,5 @@ function clearInputOnEnter(e) {
 document.getElementById("clearOption").addEventListener("click", clearInput, false);
 document.getElementById("clearOption").addEventListener("keydown", clearInputOnEnter, false);
 
+
+})(this);
