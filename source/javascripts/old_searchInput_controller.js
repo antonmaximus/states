@@ -3,7 +3,8 @@
 
 ;(function(global) {
 'use strict';
- var models = global.models = global.models || {};
+ var Models = global.Models = global.Models || {};
+
 
 /*******************************************
 ************* Helper Functions *************
@@ -164,8 +165,33 @@ function disableClearIcon() {
 
 }
 
+
+// AJAX
+function getJSONArray(key, field, callback) {
+  var parameters = "?input=" + key + "&field=" + field + "&t=" + Math.random(),
+      path = "./php/serverSideParser.php",
+      xhr = new XMLHttpRequest(),
+      jsonObj;
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) { //success
+        jsonObj = JSON.parse(xhr.responseText);
+        callback(jsonObj)
+      } else {
+        console.error(xhr);
+      }
+    }
+  };
+  xhr.open("GET", path + parameters, true);
+  xhr.send();
+}
+
+
 function sendRequestToServer() { 
   var key = document.getElementById("searchInput").value,
+    field = 'State';
+  if (key.length >= 1)
       parameters = "?input=" + key + "&field=State" + "&t=" + Math.random(),
       path = "./php/serverSideParser.php",
       xhr = new XMLHttpRequest(),

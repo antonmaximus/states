@@ -1,4 +1,4 @@
-!!!
+!!! 5
 %html{ lang: "en" }
   %head
     %meta{ charset: "utf-8" }
@@ -7,3 +7,10 @@
     %title= data.page.title
   %body
     = yield
+    -#  Adding stylesheets and javascript at the bottom
+    = stylesheet_link_tag 'custom.css'
+
+    -# Javascript
+    / # = javascript_include_tag  'models.js', 'controllers.js', 'map_controller.js'
+    = javascript_include_tag  'models.js', 'info_controller.js', 'listedResults_controller.js', 'map_controller.js', 'searchInput_controller.js', 'keyInput_controller.js'
+    / # = javascript_include_tag  'all.js'

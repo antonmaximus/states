@@ -1,202 +1,153 @@
-@charset "utf-8";
+@charset "UTF-8";
+/*------------------------------------*\
+    CONTENTS
+\*------------------------------------*/
+/*
+RESET
+SHARED
+MAIN
+CAROUSEL
+*/
+
+
+/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+/*
+A more considered reset; more of a restart...
+*/
+html,body,div,span,applet,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,hr,
+a,abbr,address,cite,code,
+del,dfn,em,img,ins,kbd,q,s,samp,
+small,strong,sub,sup,tt,var,
+b,u,i,
+dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary,
+time,mark,audio,video{
+    margin:0;
+    padding:0;
+}
+article,aside,details,figcaption,figure,footer,
+header,hgroup,menu,nav,section{
+    display:block;
+}
+table{
+    border-collapse:collapse;
+    border-spacing:0;
+}
+strong,b,mark{
+    font-weight:bold;
+    font-style:inherit;
+}
+em,i,cite,q,address,dfn,var{
+    font-style:italic;
+    font-weight:inherit;
+}
+abbr[title],dfn[title]{
+    cursor:help;
+    border-bottom:1px dotted;
+}
+ins{
+    border-bottom:1px solid;
+}
+a,u,ins{
+    text-decoration:none;
+}
+del,s{
+    text-decoration:line-through;
+}
+pre,code,samp,kbd{
+    font-family:monospace;
+}
+small{
+    font-size:0.75em;
+}
+img{
+    border:none;
+    font-style:italic;
+}
+input,
+select,option,optgroup,
+textarea{
+    font:inherit;
+}
+
+
+
+/*------------------------------------*\
+    $MAIN
+\*------------------------------------*/
+
 
 $imageFolder: '../images/';
 $greyText: #858788;
 $blackText: #555;
 $greenHighlight: #01c4c6;
 
+$fontSize: 16px;
+html {
+  font-size: $fontSize;
+}
 
-/************************************
-********** General Content **********
-*************************************/ 
+
 body{
   background-color: #FFF; 
-  clear: both; 
-  margin: 0 auto; 
-}
-  
-$link: #028385;
-a {
-  outline: 0; 
-  color: $greyText; 
-  text-decoration: none;
-  border-bottom: 2px dotted $link;
-  transition: border-bottom 2s cubic-bezier(0.05, 0.95, 0.05, 0.95); 
-
-  &:hover, &:active {
-    border-bottom: 2px solid #fafafa;
-  }
-
-}
-
-
-/***************************
-********** Header **********
-****************************/ 
-$headerGradientStart: #5b6065;
-$headerGradientEnd: #1e242a;
-
-$dropdownGradientStart: #1f252c;
-$dropdownGradientEnd: #000;
-
-#headerBackground {
-  background: linear-gradient(to bottom, $headerGradientStart, $headerGradientEnd);
-}
-
-.mainHeader {
-  height: 63px; 
-  width: 1024px;
-  margin: 0 auto; 
-  font-size: 17px; 
-  font-family: arial; 
-  color: $greyText;
-}
-
-.mainHeader img {
-  outline: 0; 
-  float: left; 
-  margin: 18px 10px 0 0px; 
-}
-
-.mainNav {
+  text-align: center;
+  color: #000;
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 100%%;
+  width: 800px;
   margin: 0 auto;
-  display: inline-block; 
+
 }
 
-.mainNav > ul {
-  list-style: none; 
-  margin: 0 auto;
-  padding: 20px 0 0 0;
-}
+main {
+  display: inline-block;
+  vertical-align: text-top;
 
-.mainNav > ul > li {
-  float: left; 
-}
-  
+  width: 36%;
+  text-align: left;
 
-.mainNav ul li ul{
-  position: relative;
-  z-index: 10;
-  display: none; 
-  margin-top: 22px; 
-  padding: 0 0 6px 0;
-  line-height: 34px;  
-  box-shadow: 0px 4px 10px $greyText; 
-  
-  background: linear-gradient(to bottom, $dropdownGradientStart, $dropdownGradientEnd);
-}
-
-.mainNav li:hover>ul {
-  display: block;
-}
-
-.mainNav ul ul li {
-  display: block; 
-  float: none; 
-  padding: 0; 
-}
-
-.userNav  {
-  display: inline-block; 
-  float: right; 
-  margin-right: 20px; 
-}
-
-.userNav ul {
-  list-style: none; 
-  margin: 0 auto;
-  padding: 20px 0 0 0;
-}
-
-.userNav > ul > li {
-  float: left; 
-}
-
-.username {
-  font-weight: bold;
-}
-
-.mainNav > ul > li > a {
-  padding: 0 15px ; 
-}
-
-.mainNav ul ul li a {
-  display: block; 
-  padding-left: 9%; 
-}
-
-.mainNav ul ul li a:hover, 
-.mainNav ul ul li a:active {
-  background-color: #383e44;
-}
-
-
-.mainHeader a {
-outline: 0; 
-text-decoration: none;
-text-shadow: 1px 1px #000; 
-border-bottom: 0;
-
-
-  &:link, &:visited {
-    color: $greyText; 
-  }
-
-  &:hover, &:active {
-  color: #FFF ;
+  .search {
   }
 }
 
-a.logo:link, a.logo:hover {
-  border-style:none;
-}
-  
 
-/*****************************
-**********  Content **********
-******************************/  
-.mainContent {
-  width: 1024px;
-  margin: 0 auto; 
-  margin-top: 20px;
-  
-  font-family: arial; 
-  color: $blackText;
+.map {
+  display: inline-block;
+  vertical-align: text-top;
+  width: 62%;
+
+  object {
+    width: 100%;
+  }
 }
 
-
-.searchEntry {
-  width: 300px; 
-  height: 80px; 
-  padding: 20px; 
-  margin-right: 40px;
-  border-color: #999;
-}
 
 
 /********************************************
-********** Search Input and Button **********
+********** Search Input  **********
 *********************************************/
 $searchIcon: $imageFolder + 'searchIcon2.png' ;
 
-button,
-input[type="text"] {
-    font-size: 0.875em;
-    height: 40px;
-    margin: 0;
-    vertical-align: middle;
-    color: $blackText;
-}
+input {
+  height: $fontSize * 2.5;
+  margin: $fontSize * 0.75;
+  width: 90%;
+  vertical-align: middle;
 
-input[type="text"] {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;    
-    padding: 0 4px;
-    width: 100%;
-    padding: 0 0 0 23px; 
-    background: url($searchIcon) no-repeat  1% center;
-    background-size: auto 45%;
+
+  background: url($searchIcon) no-repeat  1% center;
+  background-size: auto 45%;
+  padding: 0 0 0 23px; 
+
+  box-sizing: border-box;    
+  appearance: searchfield;
+
 }
 
 button[type="text"] {
@@ -206,76 +157,50 @@ button[type="text"] {
 }
 
 
-.container {
-  display: table;
-  width: 100%;
-}
-
-.cell {
-  display: table-cell;
+legend {
+  text-align: left;
 }
 
 
-/*********************************
-********** Clear Option **********
-**********************************/
-$closeIcon: $imageFolder + 'closeIcon4.png';
-$iconSize: 100% auto;
-$outOfView: -40px;
-$inView: 4px;
-
-.cell:first-child {
-  position: relative;
+/*******************************
+********** State Info **********
+********************************/
+.info {
+  padding-top: 20px;
+  text-align: left;
 }
 
-
-#clearOption {
-  z-index: 2;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  cursor: pointer;
-  top: 10px;
-
-  background: url($closeIcon) no-repeat;
-  background-size: $iconSize;
-
-  right: $inView;
-}
-
-#clearOption.clearable {
-  animation: moveIn 0.75s;
-  right: $inView;
+.info h1 {
   display: inline-block;
-
+  font-size: 40px;
+  margin: 0;
 }
 
-@keyframes moveIn {
-    from {
-      right: $outOfView;
-      display: inline-block;
-    }
-    to {
-      right: $inView;
-      display: inline-block;
-    }
+.info ul {
+  list-style-type: none;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding-left: 0;
 }
 
-
-#clearOption.removeIcon {
-  animation: moveOut 0.9s;
-  display: inline-block;
-  right: $outOfView;
+.info ul li {
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
-@keyframes moveOut {
-    from { right: $inView; }
-    to { right: $outOfView;}
+
+#flag {
+  height: 35px;
+  margin-left: 6px;
+  box-shadow: 0px 3px 10px $greyText; 
 }
 
 
-/************************************
-********** Search Results **********
-*************************************/
+
+/*------------------------------------*\
+    $Listed Results
+\*------------------------------------*/
+
+
 #result {
   display: none; 
   margin: 0;
@@ -300,122 +225,367 @@ $inView: 4px;
 }
 
 
-
-/*******************************
-********** State Info **********
-********************************/
-.stateInfo {
-  padding-top: 20px;
-}
-
-.stateInfo h1 {
-  display: inline-block;
-  font-size: 40px;
-  margin: 0;
-}
-
-.stateInfo ul {
-  list-style-type: none;
-  margin-left: 10px;
-  margin-top: 10px;
-  padding-left: 0;
-}
-
-.stateInfo ul li {
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-
-#flag {
-  /*width: 125px;*/
-  height: 35px;
-  /*display: inline-block;*/
-  margin-left: 6px;
-  box-shadow: 0px 3px 10px $greyText; 
-}
-
-#map {
-  width: 550px;
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 60px;
-  box-shadow: 0px 4px 10px $greyText; 
-}
-
-.titleList {
-  font-weight: bold;
-}
-
-.thick {
-  font-weight: bold; 
-}
-
-.leftfield {
-  display: inline-block;
-
-}
-
-#info {
-  font-size: 15px;
-}
-
-.reveal {
-  display: block;
-}
-
-.noShow {
-  display: none;
-}
-
-/*******************************
-********** Responsive **********
-********************************/
-@media screen and (max-width: 940px) {
-  .mainContent {
-    width: auto;
-    margin-left: 10px;
-    margin-top: 10px;
-  }
-
-  .searchEntry {
-    margin-right: 0;
-  }
-
-  #map {
-    margin-top: 10px;
-    margin-right: 0;
-    width: 550px;
-    display: block;
-
-  }
-
-  .mainHeader {
-    margin-left: 10px;
-    width: auto;
-  }
-
-}
-
-@media screen and (max-width: 570px) {
-  #map {
-    width: 380px;
-  }
-
-  .stateInfo h1 {
-    font-size: 35px; 
-  }
-
-}
+/*------------------------------------*\
+    $MAP
+\*------------------------------------*/
 
 
-@media screen and (max-width: 411px) {
-  #map {
-    width: 340px;
-  }
 
-  .stateInfo h1 {
-    font-size: 35px; 
-  }
 
-}
+
+
+
+
+// /************************************
+// ********** General Content **********
+// *************************************/ 
+// body{
+//   background-color: #FFF; 
+//   clear: both; 
+//   text-align: center;
+//   margin: 0 auto; 
+// }
+
+// .search, .map {
+//   display: inline-block;
+//   vertical-align: text-top;
+// }
+
+// .map {
+//   object {
+//     width: 500px;
+//   }
+// }
+
+  
+// $link: #028385;
+// a {
+//   outline: 0; 
+//   color: $greyText; 
+//   text-decoration: none;
+//   border-bottom: 2px dotted $link;
+//   transition: border-bottom 2s cubic-bezier(0.05, 0.95, 0.05, 0.95); 
+
+//   &:hover, &:active {
+//     border-bottom: 2px solid #fafafa;
+//   }
+
+// }
+
+
+// /***************************
+// ********** Header **********
+// ****************************/ 
+// $headerGradientStart: #5b6065;
+// $headerGradientEnd: #1e242a;
+
+// $dropdownGradientStart: #1f252c;
+// $dropdownGradientEnd: #000;
+
+// #headerBackground {
+//   background: linear-gradient(to bottom, $headerGradientStart, $headerGradientEnd);
+// }
+
+// .mainHeader {
+//   height: 63px; 
+//   width: 1024px;
+//   margin: 0 auto; 
+//   font-size: 17px; 
+//   font-family: arial; 
+//   color: $greyText;
+// }
+
+// .mainHeader img {
+//   outline: 0; 
+//   float: left; 
+//   margin: 18px 10px 0 0px; 
+// }
+
+// .mainNav {
+//   margin: 0 auto;
+//   display: inline-block; 
+// }
+
+// .mainNav > ul {
+//   list-style: none; 
+//   margin: 0 auto;
+//   padding: 20px 0 0 0;
+// }
+
+// .mainNav > ul > li {
+//   float: left; 
+// }
+  
+
+// .mainNav ul li ul{
+//   position: relative;
+//   z-index: 10;
+//   display: none; 
+//   margin-top: 22px; 
+//   padding: 0 0 6px 0;
+//   line-height: 34px;  
+//   box-shadow: 0px 4px 10px $greyText; 
+  
+//   background: linear-gradient(to bottom, $dropdownGradientStart, $dropdownGradientEnd);
+// }
+
+// .mainNav li:hover>ul {
+//   display: block;
+// }
+
+// .mainNav ul ul li {
+//   display: block; 
+//   float: none; 
+//   padding: 0; 
+// }
+
+// .userNav  {
+//   display: inline-block; 
+//   float: right; 
+//   margin-right: 20px; 
+// }
+
+// .userNav ul {
+//   list-style: none; 
+//   margin: 0 auto;
+//   padding: 20px 0 0 0;
+// }
+
+// .userNav > ul > li {
+//   float: left; 
+// }
+
+// .username {
+//   font-weight: bold;
+// }
+
+// .mainNav > ul > li > a {
+//   padding: 0 15px ; 
+// }
+
+// .mainNav ul ul li a {
+//   display: block; 
+//   padding-left: 9%; 
+// }
+
+// .mainNav ul ul li a:hover, 
+// .mainNav ul ul li a:active {
+//   background-color: #383e44;
+// }
+
+
+// .mainHeader a {
+// outline: 0; 
+// text-decoration: none;
+// text-shadow: 1px 1px #000; 
+// border-bottom: 0;
+
+
+//   &:link, &:visited {
+//     color: $greyText; 
+//   }
+
+//   &:hover, &:active {
+//   color: #FFF ;
+//   }
+// }
+
+// a.logo:link, a.logo:hover {
+//   border-style:none;
+// }
+  
+
+// /*****************************
+// **********  Content **********
+// ******************************/  
+// .mainContent {
+//   width: 1024px;
+//   margin: 0 auto; 
+//   margin-top: 20px;
+  
+//   font-family: arial; 
+//   color: $blackText;
+// }
+
+
+// .searchEntry {
+//   width: 300px; 
+//   height: 80px; 
+//   padding: 20px; 
+//   margin-right: 40px;
+//   border-color: #999;
+// }
+
+
+
+// ********************************
+// ********** Clear Option **********
+// *********************************
+// $closeIcon: $imageFolder + 'closeIcon4.png';
+// $iconSize: 100% auto;
+// $outOfView: -40px;
+// $inView: 4px;
+
+// .cell:first-child {
+//   position: relative;
+// }
+
+
+// #clearOption {
+//   z-index: 2;
+//   width: 20px;
+//   height: 20px;
+//   position: absolute;
+//   cursor: pointer;
+//   top: 10px;
+
+//   background: url($closeIcon) no-repeat;
+//   background-size: $iconSize;
+
+//   right: $inView;
+// }
+
+// #clearOption.clearable {
+//   animation: moveIn 0.75s;
+//   right: $inView;
+//   display: inline-block;
+
+// }
+
+// @keyframes moveIn {
+//     from {
+//       right: $outOfView;
+//       display: inline-block;
+//     }
+//     to {
+//       right: $inView;
+//       display: inline-block;
+//     }
+// }
+
+
+// #clearOption.removeIcon {
+//   animation: moveOut 0.9s;
+//   display: inline-block;
+//   right: $outOfView;
+// }
+// @keyframes moveOut {
+//     from { right: $inView; }
+//     to { right: $outOfView;}
+// }
+
+
+// /************************************
+// ********** Search Results **********
+// *************************************/
+// #result {
+//   display: none; 
+//   margin: 0;
+//   padding: 5px; 
+//   list-style: none;
+//   position: relative; 
+//   box-shadow: 0px 4px 10px $greyText; 
+//   background-color: #FFF;
+// }
+
+// #result li {
+//   color: #000; 
+//   padding: 5px; 
+//   display: block;
+//   float: none; 
+// }
+
+// #highlighted, 
+// #result li:hover {
+//   background-color: $greenHighlight; /*#d2e2e4; */
+//   cursor: pointer;
+// }
+
+
+
+
+// #map {
+//   width: 550px;
+//   display: inline-block;
+//   vertical-align: top;
+//   margin-right: 60px;
+//   box-shadow: 0px 4px 10px $greyText; 
+// }
+
+// .titleList {
+//   font-weight: bold;
+// }
+
+// .thick {
+//   font-weight: bold; 
+// }
+
+// .leftfield {
+//   display: inline-block;
+
+// }
+
+// #info {
+//   font-size: 15px;
+// }
+
+// .reveal {
+//   display: block;
+// }
+
+// .noShow {
+//   display: none;
+// }
+
+// /*******************************
+// ********** Responsive **********
+// ********************************/
+// @media screen and (max-width: 940px) {
+//   .mainContent {
+//     width: auto;
+//     margin-left: 10px;
+//     margin-top: 10px;
+//   }
+
+//   .searchEntry {
+//     margin-right: 0;
+//   }
+
+//   #map {
+//     margin-top: 10px;
+//     margin-right: 0;
+//     width: 550px;
+//     display: block;
+
+//   }
+
+//   .mainHeader {
+//     margin-left: 10px;
+//     width: auto;
+//   }
+
+// }
+
+// @media screen and (max-width: 570px) {
+//   #map {
+//     width: 380px;
+//   }
+
+//   .stateInfo h1 {
+//     font-size: 35px; 
+//   }
+
+// }
+
+
+// @media screen and (max-width: 411px) {
+//   #map {
+//     width: 340px;
+//   }
+
+//   .stateInfo h1 {
+//     font-size: 35px; 
+//   }
+
+// }
 
