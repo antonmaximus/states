@@ -30,21 +30,26 @@ function getSiblingHelper(highlighted, arrowkey) {
   return sibling;
 }
 
+function assignIdAndAttribute(elem) {
+    elem.id = "highlighted";
+    Map.borderTheState(elem.getAttribute('data-abbreviation'));
+}
 
 //Process Down Or Up Arrow Key
-function highlightHTMLElementViaArrowKey(key) {
+function highlightListedItemViaArrowKey(key) {
   var highlighted = document.getElementById('highlighted'),
       li, x, sibling;
 
   if (highlighted === null) { //If nothing is highlighted, highlight firs/last item
     li = document.getElementById("result").getElementsByTagName('li');
-    x = (key == '40' ? 0 : li.length-1); //if down arrow, select first child.
-    li[x].id = "highlighted";
+    //If down key, select first child. Else, up.
+    x = (key=='40' ? 0 : li.length-1); 
+    assignIdAndAttribute(li[x]);
   }
   else { //If something is highlighted, move the highlight to sibling
     sibling = getSiblingHelper(highlighted, key);
     if (sibling) {
-      sibling.id = "highlighted";
+      assignIdAndAttribute(sibling);
       highlighted.removeAttribute("id");
     }
   }
@@ -59,26 +64,25 @@ function selectInList(e) {
 
   //Handle 'Return' key
   if (key == '13') { 
-    //If a <li> item is already highlighted, use that item
+    //If a <li> item is already highlighted, select that item
     if (highlighted !== null) { 
       List.selectStateFromList(highlighted.innerHTML);
       SearchInput.clearSearchInput();
     }
-    //highlight the first  <li> item
+    //if there's a list and non is highlighted, navigate down
     else if (listedResults.length >= 1) { 
-      highlightHTMLElementViaArrowKey('40'); 
+      highlightListedItemViaArrowKey('40'); 
     }  
     //This case happens if a user has already hit 'esc',
     //and then hits 'enter' to re-query
     else if (listedResults.length == 0) {
-      // sendRequestToServer(); ?
-      console.log('YOU CALLED?');
+      SearchInput.queryMatching();
     }
   } 
   //Handle Up or Down Arrow keys
   else if (key == '38' || key == '40') {
     if (listedResults.length >= 1) {
-      highlightHTMLElementViaArrowKey(key);
+      highlightListedItemViaArrowKey(key);
     }
   }
   //Clear items when 'esc' key is pressed

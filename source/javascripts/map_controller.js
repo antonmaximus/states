@@ -4,12 +4,17 @@
 //Global Import
 var Models = global.Models = global.Models || {};
 var Info = global.Info = global.Info || {};
+var SearchInput = global.SearchInput = global.SearchInput || {};
+var List = global.List = global.List || {};
+
+
 
 //Make the following local functions accessible outside the closure
 var Map = global.Map = global.Map || {};
 Map.clearHighlightedStates = clearHighlightedStates;
 Map.highlightStates = highlightStates;
 Map.displaySelectedState = displaySelectedState;
+Map.borderTheState = borderTheState;
 
 
 var svgObj = document.getElementById('svgmap');
@@ -35,6 +40,15 @@ function clearHighlightedStates() {
   }
 }
 
+//Clear the only the bordered state
+function clearBorderedState() {
+  var selected = svgObj.contentDocument.getElementsByClassName('bordered');
+  if (selected.length > 0) {
+    var className = selected[0].getAttribute('class').replace('bordered','').trim();
+    selected[0].setAttribute('class', className);
+  }
+}
+
 //Clear the only selected state
 function clearSelectedState() {
   var selected = svgObj.contentDocument.getElementsByClassName('selected');
@@ -44,8 +58,10 @@ function clearSelectedState() {
   }
 }
 
+
 function highlightStates(objArray) {
   clearHighlightedStates();  //Clear all highlighted states
+  clearBorderedState(); // Clear if any
 
   var svgDoc = document.getElementById('svgmap').contentDocument,
       svgState, 
@@ -62,7 +78,23 @@ function highlightStates(objArray) {
   }
 }
 
+
+function borderTheState(stateAbbreviation) {
+  clearBorderedState();
+
+  var svgState = svgObj.contentDocument.getElementById(stateAbbreviation);
+  //check if svg element is already bordered:
+  var className = svgState.getAttribute('class');
+  className = (className.indexOf('bordered') > -1) ? className : className + ' bordered';
+  svgState.setAttribute('class', className);
+}
+
+
+
 function selectTheState(stateAbbreviation) {
+  clearSelectedState();
+  clearBorderedState();
+
   var svgState = svgObj.contentDocument.getElementById(stateAbbreviation);
   //check if svg element is already selected:
   var className = svgState.getAttribute('class');
@@ -70,13 +102,10 @@ function selectTheState(stateAbbreviation) {
   svgState.setAttribute('class', className);
 }
 
-
-
-
-
 function displaySelectedState(jsonObj) {
   clearHighlightedStates();
-  clearSelectedState();
+  SearchInput.clearSearchInput();
+  List.clearListedResults();
 
   var searchResults = Models.createSearchResultsFromJsonArray(jsonObj);
   Info.updateInfo(searchResults[0]);

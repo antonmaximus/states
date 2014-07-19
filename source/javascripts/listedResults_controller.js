@@ -2,7 +2,6 @@
 'use strict';
 
   //Global Import
-  var Models = global.Models = global.Models || {};
   var Info = global.Info = global.Info || {};
   var Map = global.Map = global.Map || {};
 
@@ -34,7 +33,7 @@
 
 
   function clearListAndDisplay(jsonObj) {
-    clearListedResults();
+    // clearListedResults();
     Map.displaySelectedState(jsonObj);
   }
 

@@ -2,30 +2,18 @@
 title: US States
 ---
 
-/Navigation Menu
-/ #headerBackground
-/   %header.mainHeader
-/     = link_to image_tag('logo.png', alt:'Logo'), '#'
-/     %nav.mainNav
-/       %ul
-/         %li= link_to 'SAMPLE', '#'
-/         %li
-/           = link_to 'DROPDOWN', '#'
-/           %ul
-/             /Looping elements for the dropdown sub-menu
-/             - ['Users', 'Staff', 'Managers', 'Delivery'].each do |i|
-/               %li= link_to i, '#', data: { tabindex: -1 }
-
+%header 
+  %h1 Find State Information
 
 %main 
   %section.search
     %fieldset
       %legend Enter U.S. State
-      %input#searchInput{ name:'searchInputName', type:'text', maxlength:20, tabindex:1, autofocus:true, autocomplete:"off"}
+      %input#searchInput{ name:'searchInputName', type:'text', maxlength:20, tabindex:1, autofocus:true, autocomplete:"off", placeholder:'e.g., California'}
       /Initial values are for JavaScript manipulation
       #clearOption{ style:"display: none; opacity: 0;", tabindex:2 }
       %ul#result
-  %section.info
+  %div.info
     %h1#stateName Alabama
     = image_tag('./flags/alabama.flag.png', id:'flag', alt:'Alabama flag',
         title:'Alabama flag')
@@ -43,20 +31,16 @@ title: US States
         %span.titleList Population (2013):
         %span#population 4,833,722
 
-
-
 %section.map
   %object#svgmap{type:"image/svg+xml", data:"./images/us_map.svg"}
 
-
-
-
-
 #info.mainContent
+  %p This web app demonstrates raw JavaScript, AJAX, JSON, and MVC.
   %a{ href: "https://github.com/ayjaygit/states#readme", target: "_blank" } |
-    Learn More about the Technologies demonstrated.
+    Learn More.
 
 / //adding stylesheets and javascript at the bottom
 / = stylesheet_link_tag 'normalize.css', 'custom.css'
 / /= javascript_include_tag  'models.js', 'controllers.js' 
 / = javascript_include_tag  'all.js'
+
