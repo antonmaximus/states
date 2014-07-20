@@ -3,44 +3,38 @@ title: US States
 ---
 
 %header 
+  %nav
+    / %a{ href: "https://github.com/ayjaygit/states#readme", target: "_blank" } Anton's
   %h1 Find State Information
 
 %main 
   %section.search
-    %fieldset
-      %legend Enter U.S. State
-      %input#searchInput{ name:'searchInputName', type:'text', maxlength:20, tabindex:1, autofocus:true, autocomplete:"off", placeholder:'e.g., California'}
-      /Initial values are for JavaScript manipulation
-      #clearOption{ style:"display: none; opacity: 0;", tabindex:2 }
+    %input#searchInput{ name:'searchInputName', type:'text', maxlength:20, tabindex:1, autofocus:true, autocomplete:"off", placeholder:'e.g., California'}
+      .clearIconOff#clearIcon{ tabindex:2 }
       %ul#result
   %div.info
-    %h1#stateName Alabama
-    = image_tag('./flags/alabama.flag.png', id:'flag', alt:'Alabama flag',
-        title:'Alabama flag')
+    %h1#stateName Texas
+    = image_tag('./flags/texas.flag.png', id:'flag', alt:'Texas flag', title:'Texas flag')
     %ul#stateInfo
       %li
         %span.titleList Nickname:
-        %span#nickname Yellowhammer State
+        %span#nickname Lone Star State
       %li
         %span.titleList Capital:
-        %span#capital Montgomery
+        %span#capital Austin
       %li
         %span.titleList Area:
-        %span#area_sqmi 52,420.07 sq mi
+        %span#area_sqmi 268,596.46 sq mi
       %li
         %span.titleList Population (2013):
-        %span#population 4,833,722
+        %span#population 26,448,193
 
 %section.map
   %object#svgmap{type:"image/svg+xml", data:"./images/us_map.svg"}
 
-#info.mainContent
-  %p This web app demonstrates raw JavaScript, AJAX, JSON, and MVC.
-  %a{ href: "https://github.com/ayjaygit/states#readme", target: "_blank" } |
-    Learn More.
-
-/ //adding stylesheets and javascript at the bottom
-/ = stylesheet_link_tag 'normalize.css', 'custom.css'
-/ /= javascript_include_tag  'models.js', 'controllers.js' 
-/ = javascript_include_tag  'all.js'
+%footer
+  %p This web app demonstrates raw JavaScript, AJAX, JSON, PHP, SVG, and MVC
+  %a{ href: "//github.com/ayjaygit/states#readme", target: "_blank" } Learn More on GitHub
+  %span &#8226;
+  %a{ href: "anton23.com", target: "_blank" } Go to Anton's Page
 

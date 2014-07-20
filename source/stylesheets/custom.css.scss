@@ -143,6 +143,20 @@ body{
   width: 800px;
   margin: 0 auto;
 
+  a {
+    display: inline-block;
+    border-bottom: 0px;
+    transition: ease-out;
+
+    &, &:visited {
+      color: $selectedState;
+    }
+
+    &:hover, &:active {
+      border-bottom: 1px solid;
+    }
+  }
+
 }
 
 header {
@@ -157,6 +171,7 @@ main {
   text-align: left;
 
   .search {
+    position: relative;
   }
 }
 
@@ -200,7 +215,7 @@ input {
 fieldset {
   position: relative;
   padding: 10px;
-  border: rgba(0, 0, 0, 0.298039) 1px solid;
+  border: rgba(0, 0, 0, 0.298039) 0px solid;
 }
 
 legend {
@@ -246,10 +261,11 @@ legend {
     $Listed Results
 \*------------------------------------*/
 
+$searchInputWidth: 260px;
 
 #result {
   display: none; 
-  width: 260px;
+  width: $searchInputWidth;
   box-sizing: border-box;
   margin: 0;
   padding: 5px; 
@@ -300,339 +316,103 @@ legend {
   }
 
 
+/*------------------------------------*\
+    $Footer
+\*------------------------------------*/
 
+footer {
+  margin-top: 7%;
+  font-size: 13px;
+  line-height: 1.4;
 
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: Tahoma, Geneva, sans-serif;
 
-
-// /************************************
-// ********** General Content **********
-// *************************************/ 
-// body{
-//   background-color: #FFF; 
-//   clear: both; 
-//   text-align: center;
-//   margin: 0 auto; 
-// }
-
-// .search, .map {
-//   display: inline-block;
-//   vertical-align: text-top;
-// }
-
-// .map {
-//   object {
-//     width: 500px;
-//   }
-// }
-
-  
-// $link: #028385;
-// a {
-//   outline: 0; 
-//   color: $greyText; 
-//   text-decoration: none;
-//   border-bottom: 2px dotted $link;
-//   transition: border-bottom 2s cubic-bezier(0.05, 0.95, 0.05, 0.95); 
-
-//   &:hover, &:active {
-//     border-bottom: 2px solid #fafafa;
-//   }
-
-// }
-
-
-// /***************************
-// ********** Header **********
-// ****************************/ 
-// $headerGradientStart: #5b6065;
-// $headerGradientEnd: #1e242a;
-
-// $dropdownGradientStart: #1f252c;
-// $dropdownGradientEnd: #000;
-
-// #headerBackground {
-//   background: linear-gradient(to bottom, $headerGradientStart, $headerGradientEnd);
-// }
-
-// .mainHeader {
-//   height: 63px; 
-//   width: 1024px;
-//   margin: 0 auto; 
-//   font-size: 17px; 
-//   font-family: arial; 
-//   color: $greyText;
-// }
-
-// .mainHeader img {
-//   outline: 0; 
-//   float: left; 
-//   margin: 18px 10px 0 0px; 
-// }
-
-// .mainNav {
-//   margin: 0 auto;
-//   display: inline-block; 
-// }
-
-// .mainNav > ul {
-//   list-style: none; 
-//   margin: 0 auto;
-//   padding: 20px 0 0 0;
-// }
-
-// .mainNav > ul > li {
-//   float: left; 
-// }
-  
-
-// .mainNav ul li ul{
-//   position: relative;
-//   z-index: 10;
-//   display: none; 
-//   margin-top: 22px; 
-//   padding: 0 0 6px 0;
-//   line-height: 34px;  
-//   box-shadow: 0px 4px 10px $greyText; 
-  
-//   background: linear-gradient(to bottom, $dropdownGradientStart, $dropdownGradientEnd);
-// }
-
-// .mainNav li:hover>ul {
-//   display: block;
-// }
-
-// .mainNav ul ul li {
-//   display: block; 
-//   float: none; 
-//   padding: 0; 
-// }
-
-// .userNav  {
-//   display: inline-block; 
-//   float: right; 
-//   margin-right: 20px; 
-// }
-
-// .userNav ul {
-//   list-style: none; 
-//   margin: 0 auto;
-//   padding: 20px 0 0 0;
-// }
-
-// .userNav > ul > li {
-//   float: left; 
-// }
-
-// .username {
-//   font-weight: bold;
-// }
-
-// .mainNav > ul > li > a {
-//   padding: 0 15px ; 
-// }
-
-// .mainNav ul ul li a {
-//   display: block; 
-//   padding-left: 9%; 
-// }
-
-// .mainNav ul ul li a:hover, 
-// .mainNav ul ul li a:active {
-//   background-color: #383e44;
-// }
-
-
-// .mainHeader a {
-// outline: 0; 
-// text-decoration: none;
-// text-shadow: 1px 1px #000; 
-// border-bottom: 0;
-
-
-//   &:link, &:visited {
-//     color: $greyText; 
-//   }
-
-//   &:hover, &:active {
-//   color: #FFF ;
-//   }
-// }
-
-// a.logo:link, a.logo:hover {
-//   border-style:none;
-// }
-  
-
-// /*****************************
-// **********  Content **********
-// ******************************/  
-// .mainContent {
-//   width: 1024px;
-//   margin: 0 auto; 
-//   margin-top: 20px;
-  
-//   font-family: arial; 
-//   color: $blackText;
-// }
-
-
-// .searchEntry {
-//   width: 300px; 
-//   height: 80px; 
-//   padding: 20px; 
-//   margin-right: 40px;
-//   border-color: #999;
-// }
+  span {
+    display: inline-block;
+  }
+}
 
 
 
 // ********************************
 // ********** Clear Option **********
 // *********************************
-// $closeIcon: $imageFolder + 'closeIcon4.png';
-// $iconSize: 100% auto;
-// $outOfView: -40px;
-// $inView: 4px;
-
-// .cell:first-child {
-//   position: relative;
-// }
+$closeIcon: $imageFolder + 'closeIcon4.png';
+$iconSize: 100% auto;
+$outOfView: 40px;
+$inView: 20px;
 
 
-// #clearOption {
-//   z-index: 2;
-//   width: 20px;
-//   height: 20px;
-//   position: absolute;
-//   cursor: pointer;
-//   top: 10px;
+#clearIcon {
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  background: url($closeIcon) no-repeat;
+  background-size: $iconSize;
 
-//   background: url($closeIcon) no-repeat;
-//   background-size: $iconSize;
+  position: absolute;
+  top: 10px;
+}
 
-//   right: $inView;
-// }
+.clearIconOff {
+  right: $inView;
+  opacity: 0;
 
-// #clearOption.clearable {
-//   animation: moveIn 0.75s;
-//   right: $inView;
-//   display: inline-block;
+  transition-property: opacity right transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
 
-// }
+}
 
-// @keyframes moveIn {
-//     from {
-//       right: $outOfView;
-//       display: inline-block;
-//     }
-//     to {
-//       right: $inView;
-//       display: inline-block;
-//     }
-// }
+.clearIconOn {
+  opacity: 1;
+  right: $outOfView;
+  transform: rotate(270deg);
+  cursor: pointer;
 
-
-// #clearOption.removeIcon {
-//   animation: moveOut 0.9s;
-//   display: inline-block;
-//   right: $outOfView;
-// }
-// @keyframes moveOut {
-//     from { right: $inView; }
-//     to { right: $outOfView;}
-// }
-
-
-// /************************************
-// ********** Search Results **********
-// *************************************/
-// #result {
-//   display: none; 
-//   margin: 0;
-//   padding: 5px; 
-//   list-style: none;
-//   position: relative; 
-//   box-shadow: 0px 4px 10px $greyText; 
-//   background-color: #FFF;
-// }
-
-// #result li {
-//   color: #000; 
-//   padding: 5px; 
-//   display: block;
-//   float: none; 
-// }
-
-// #highlighted, 
-// #result li:hover {
-//   background-color: $greenHighlight; /*#d2e2e4; */
-//   cursor: pointer;
-// }
+  transition-property: opacity right transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
 
 
 
+/*******************************
+********** Responsive **********
+********************************/
+@media screen and (max-width: 800px) {
+  body {
+    width: auto;
+  }
 
-// #map {
-//   width: 550px;
-//   display: inline-block;
-//   vertical-align: top;
-//   margin-right: 60px;
-//   box-shadow: 0px 4px 10px $greyText; 
-// }
+  main {
+    display: block;
+    width: auto;
+    text-align: center;
 
-// .titleList {
-//   font-weight: bold;
-// }
+    .info {
+      text-align: center;
+    }
+  }
+  .map {
+    display: block;
+    width: auto;
+  }
 
-// .thick {
-//   font-weight: bold; 
-// }
+  #result {
+    left: 50%;
+    margin-left: -$searchInputWidth/2;
+    text-align: left;
+  }
 
-// .leftfield {
-//   display: inline-block;
-
-// }
-
-// #info {
-//   font-size: 15px;
-// }
-
-// .reveal {
-//   display: block;
-// }
-
-// .noShow {
-//   display: none;
-// }
-
-// /*******************************
-// ********** Responsive **********
-// ********************************/
-// @media screen and (max-width: 940px) {
-//   .mainContent {
-//     width: auto;
-//     margin-left: 10px;
-//     margin-top: 10px;
-//   }
-
-//   .searchEntry {
-//     margin-right: 0;
-//   }
-
-//   #map {
-//     margin-top: 10px;
-//     margin-right: 0;
-//     width: 550px;
-//     display: block;
-
-//   }
-
-//   .mainHeader {
-//     margin-left: 10px;
-//     width: auto;
-//   }
-
-// }
+  #clearIcon {
+    left: 50%;
+    margin-left: 100px;
+    right: 0;
+  }
+}
 
 // @media screen and (max-width: 570px) {
 //   #map {

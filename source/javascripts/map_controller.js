@@ -5,7 +5,6 @@
 var Models = global.Models = global.Models || {};
 var Info = global.Info = global.Info || {};
 var SearchInput = global.SearchInput = global.SearchInput || {};
-var List = global.List = global.List || {};
 
 
 
@@ -103,9 +102,7 @@ function selectTheState(stateAbbreviation) {
 }
 
 function displaySelectedState(jsonObj) {
-  clearHighlightedStates();
-  SearchInput.clearSearchInput();
-  List.clearListedResults();
+  SearchInput.clearSearchInputAndMore();
 
   var searchResults = Models.createSearchResultsFromJsonArray(jsonObj);
   Info.updateInfo(searchResults[0]);

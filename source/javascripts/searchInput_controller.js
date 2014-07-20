@@ -1,6 +1,3 @@
-/*global document: false, console: false, XMLHttpRequest: false */
-/*global setInterval: false, clearInterval: false */
-
 ;(function(global) {
 'use strict';
 
@@ -9,23 +6,29 @@
   var Info = global.Info = global.Info || {};
   var Map = global.Map = global.Map || {};
   var List = global.List = global.List || {};
+  var Clear = global.Clear = global.Clear || {};
 
   //Make the following local functions accessible outside the closure
   var SearchInput = global.SearchInput = global.SearchInput || {};
-  SearchInput.clearSearchInput = clearSearchInput;
+  SearchInput.clearSearchInputAndMore = clearSearchInputAndMore;
   SearchInput.queryMatching = queryMatching;
 
 
 /**************************************************
 *** Text Search Results Controller *************
 ***************************************************/
-function clearSearchInput() {
-  document.getElementById("searchInput").value = "";
+function clearSearchInputAndMore() {
+  var el = document.getElementById("searchInput");
+  el.value = "";
+  el.focus();
+  Clear.disableClearIcon();
+  List.clearListedResults();
+  Map.clearHighlightedStates();
 }
 
 // Handle clicked item from the results li list
 function mouseClickHandler(e) {
-  clearSearchInput();
+  clearSearchInputAndMore();
   List.selectStateFromList(e.target.innerHTML);
 }
 //Handle mouse hover on highlighted items set by keyboard
@@ -71,6 +74,7 @@ function displaySearchResults(jsonObj) {
   var searchResults = Models.createSearchResultsFromJsonArray(jsonObj);
   showTextSearchResults(searchResults);
   Map.highlightStates(searchResults);
+  Clear.enableClearIcon();
 }
 
 
@@ -79,11 +83,12 @@ function queryMatching() {
 
   if (key.length >= 1) {
     //Make AJAX Call
-    Info.getJSONArray(key, 'State', displaySearchResults)
+    Info.getJSONArray(key, 'State', displaySearchResults);
   }
   else {
     List.clearListedResults();
     Map.clearHighlightedStates();
+    Clear.disableClearIcon();
   }
 
 
@@ -94,68 +99,6 @@ document.getElementById("searchInput").addEventListener("input", queryMatching, 
 
 
 
-
-/**************************************************
-************* Clear Option Controller *************
-***************************************************/
-
-// //fadeType is either "fade-in" or "fade-out"
-// function fadeHelper(element, fadeType) {
-//   var initial, end, timer;
-//   if (fadeType == 'fade-in') {
-//     element.style.display = '';
-//     initial = 0;  // initial opacity
-//     end = 0.7; //It needs to be a li'l greyed-out
-//   } else {
-//     initial = 0.7; 
-//     end = 0;
-//   }
-
-//   timer = setInterval(function () {
-//     if (Math.abs(initial-end) <= 0.09){
-//         clearInterval(timer);
-//         element.style.display = (fadeType=='fade-out' ? 'none' : '');
-//     }
-//     element.style.opacity = initial;
-//     initial += (end - initial) * 0.1;
-//   }, 20);
-// }
-
-
-// function enableClearIcon() {
-//   var elem = document.getElementById("clearOption");
-//    // elem.className = "clearable";
-//    if (elem.style.display != '') {
-//     // fadeInHelper(elem);
-//     fadeHelper(elem, 'fade-in');
-//   }
-// }
-
-// function disableClearIcon() {
-//   var elem = document.getElementById("clearOption");
-//   // elem.className = "removeIcon";
-//   // fadeOutHelper(elem);
-//     fadeHelper(elem, 'fade-out');
-// }
-
-
-
-// function clearInput() {
-//   var searchInput = document.getElementById("searchInput");
-//   searchInput.value = "";
-//   List.clearListedResults();
-//   disableClearIcon();
-//   searchInput.focus();
-// }
-
-// function clearInputOnEnter(e) {
-//   if (e.keyCode == '13') {
-//     clearInput();
-//   }
-// }
-
-// document.getElementById("clearOption").addEventListener("click", clearInput, false);
-// document.getElementById("clearOption").addEventListener("keydown", clearInputOnEnter, false);
 
 
 })(this);

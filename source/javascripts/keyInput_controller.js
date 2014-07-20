@@ -67,7 +67,7 @@ function selectInList(e) {
     //If a <li> item is already highlighted, select that item
     if (highlighted !== null) { 
       List.selectStateFromList(highlighted.innerHTML);
-      SearchInput.clearSearchInput();
+      SearchInput.clearSearchInputAndMore();
     }
     //if there's a list and non is highlighted, navigate down
     else if (listedResults.length >= 1) { 
