@@ -1,10 +1,12 @@
 Fifty States
 --------------
-*"Look Ma, No jQuery!"*
+*"Look Ma, no jQuery!"*
 
 
 
 **Author:** Anton
+
+**Demo:** [http://fiddystates.herokuapp.com/](http://fiddystates.herokuapp.com/)
 
 **Description:**
 
