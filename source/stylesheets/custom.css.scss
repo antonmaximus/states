@@ -4,135 +4,26 @@
 \*------------------------------------*/
 /*
 RESET
-SHARED
-MAIN
-CAROUSEL
+VARIABLES
+GENERAL CONTENT
 */
 
 
 /*------------------------------------*\
-    $RESET
+    $IMPORTS
 \*------------------------------------*/
-/*
-A more considered reset; more of a restart...
-*/
-html,body,div,span,applet,object,iframe,
-h1,h2,h3,h4,h5,h6,p,blockquote,pre,hr,
-a,abbr,address,cite,code,
-del,dfn,em,img,ins,kbd,q,s,samp,
-small,strong,sub,sup,tt,var,
-b,u,i,
-dl,dt,dd,ol,ul,li,
-fieldset,form,label,legend,
-table,caption,tbody,tfoot,thead,tr,th,td,
-article,aside,canvas,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section,summary,
-time,mark,audio,video{
-    margin:0;
-    padding:0;
-}
-article,aside,details,figcaption,figure,footer,
-header,hgroup,menu,nav,section{
-    display:block;
-}
-table{
-    border-collapse:collapse;
-    border-spacing:0;
-}
-strong,b,mark{
-    font-weight:bold;
-    font-style:inherit;
-}
-em,i,cite,q,address,dfn,var{
-    font-style:italic;
-    font-weight:inherit;
-}
-abbr[title],dfn[title]{
-    cursor:help;
-    border-bottom:1px dotted;
-}
-ins{
-    border-bottom:1px solid;
-}
-a,u,ins{
-    text-decoration:none;
-}
-del,s{
-    text-decoration:line-through;
-}
-pre,code,samp,kbd{
-    font-family:monospace;
-}
-small{
-    font-size:0.75em;
-}
-img{
-    border:none;
-    font-style:italic;
-}
-input,
-select,option,optgroup,
-textarea{
-    font:inherit;
-}
+@import "reset";
+@import "variables";
 
 
 
 /*------------------------------------*\
-    $MAIN
+    $GENERAL CONTENT
 \*------------------------------------*/
 
-
-$imageFolder: '../images/';
-$greyText: #858788;
-$blackText: #555;
-$greenHighlight: #01c4c6;
-
-$fontSize: 16px;
 html {
   font-size: $fontSize;
 }
-
-$cream: #fff3e5;
-$darkBrown: #705540;
-
-
-//Kuler
-// $lightGreen: rgb(206, 216, 182);
-
-//Google Maps
-// At Rest
-$water: #abd0ef; //blue
-$stateLand: #e7f1d7;
-$stateBorder: #434343;
-// During Activity
-$selectedState: #4e8c44; //#86b37f; //#7ab370; //#d6d3ce; //#bbdbb8;
-$highlightedState: #c0e0ba;
-$borderedState: #86b37f;
-
-$text: #434343; //grey
-
-
-// //Natural 
-// $water: #F7FCFF; //blue
-// $stateLand: #F3DABA;
-// $stateBorder: white;
-// $text: #434343; //grey
-
-
-// //France Old Map
-// $blue: #F3DABA;
-// $green: #CED8B6;
-// $grey: #70553B;
-// $highlight: #F3dc98;
-
-
-
-// $water: $blue;
-// $stateLand: $green;
-// $stateBorder: white;
-// $text: $grey;
-
 
 body{
   background-color: $water; 
@@ -223,9 +114,9 @@ legend {
 }
 
 
-/*******************************
-********** State Info **********
-********************************/
+/*------------------------------------*\
+    $State Information
+\*------------------------------------*/
 .info {
   padding-top: 20px;
   text-align: left;
@@ -284,7 +175,7 @@ $searchInputWidth: 260px;
 
 #highlighted, 
 #result li:hover {
-  background-color: $borderedState; /*#d2e2e4; */
+  background-color: $darkenedState; /*#d2e2e4; */
   cursor: pointer;
 }
 
@@ -307,8 +198,8 @@ $searchInputWidth: 260px;
 
   .state.bordered {
     // stroke-width: 8;
-    // stroke: $borderedState;
-    fill: $borderedState;
+    // stroke: $darkenedState;
+    fill: $darkenedState;
   }
 
   .state.selected {
@@ -336,13 +227,13 @@ footer {
 
 
 
-// ********************************
-// ********** Clear Option **********
-// *********************************
+/*------------------------------------*\
+    $Clear Option
+\*------------------------------------*/
 $closeIcon: $imageFolder + 'closeIcon4.png';
 $iconSize: 100% auto;
-$outOfView: 40px;
-$inView: 20px;
+$outOfView: 24px;
+$inView: 38px;
 
 
 #clearIcon {
@@ -357,8 +248,8 @@ $inView: 20px;
 }
 
 .clearIconOff {
-  right: $inView;
-  opacity: 0;
+  right: $outOfView;
+  opacity: 0;  
 
   transition-property: opacity right transform;
   transition-duration: 0.5s;
@@ -367,9 +258,9 @@ $inView: 20px;
 }
 
 .clearIconOn {
-  opacity: 1;
-  right: $outOfView;
-  transform: rotate(270deg);
+  opacity: 0.8;
+  right: $inView;  //Not too contrasty
+  // transform: rotate(270deg);
   cursor: pointer;
 
   transition-property: opacity right transform;
@@ -379,9 +270,9 @@ $inView: 20px;
 
 
 
-/*******************************
-********** Responsive **********
-********************************/
+/*------------------------------------*\
+    $Responsive Design
+\*------------------------------------*/
 @media screen and (max-width: 800px) {
   body {
     width: auto;
@@ -413,27 +304,4 @@ $inView: 20px;
     right: 0;
   }
 }
-
-// @media screen and (max-width: 570px) {
-//   #map {
-//     width: 380px;
-//   }
-
-//   .stateInfo h1 {
-//     font-size: 35px; 
-//   }
-
-// }
-
-
-// @media screen and (max-width: 411px) {
-//   #map {
-//     width: 340px;
-//   }
-
-//   .stateInfo h1 {
-//     font-size: 35px; 
-//   }
-
-// }
 

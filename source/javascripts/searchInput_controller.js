@@ -1,104 +1,62 @@
+/**************************************************
+*** SEARCH INPUT CONTROLLER
+***
+*** Handles user's keyboard input.
+*** Valid input are return, ESC, down arrow, and up arrow keys.
+***************************************************/
 ;(function(global) {
-'use strict';
+  'use strict';
 
   //Dependencies and Import
   var Models = global.Models = global.Models || {};
-  var Info = global.Info = global.Info || {};
+  var AjaxHelper = global.AjaxHelper = global.AjaxHelper || {};
   var Map = global.Map = global.Map || {};
   var List = global.List = global.List || {};
   var Clear = global.Clear = global.Clear || {};
 
-  //Make the following local functions accessible outside the closure
+  //Export
   var SearchInput = global.SearchInput = global.SearchInput || {};
   SearchInput.clearSearchInputAndMore = clearSearchInputAndMore;
-  SearchInput.queryMatching = queryMatching;
+  SearchInput.queryAndDisplayOnUserInput = queryAndDisplayOnUserInput;
 
 
-/**************************************************
-*** Text Search Results Controller *************
-***************************************************/
-function clearSearchInputAndMore() {
-  var el = document.getElementById("searchInput");
-  el.value = "";
-  el.focus();
-  Clear.disableClearIcon();
-  List.clearListedResults();
-  Map.clearHighlightedStates();
-}
-
-// Handle clicked item from the results li list
-function mouseClickHandler(e) {
-  clearSearchInputAndMore();
-  List.selectStateFromList(e.target.innerHTML);
-}
-//Handle mouse hover on highlighted items set by keyboard
-function removeOrigHighlightOnHoverHandler() {
-  var highlighted = document.getElementById('highlighted');
-  if (highlighted !== null) {
-    highlighted.removeAttribute("id");
-  }
-}
-
-
-function createElementWithDependencies (key, stateObj) {
-  var li = document.createElement("li");
-  li.innerHTML = stateObj.addHTMLEmphasis(key);
-  li.addEventListener("click", mouseClickHandler, false);
-  li.addEventListener("mouseover", removeOrigHighlightOnHoverHandler, false);
-  li.setAttribute('data-abbreviation', stateObj.abbreviation); //for keyInpu_controller
-  return li;
-}
-
-function showTextSearchResults(searchResults) {
-  List.clearListedResults();
-
-  var key = document.getElementById("searchInput").value,
-      fragment = document.createDocumentFragment(), //use fragment to append all at once
-      li;
-  for (var i = 0;  i < searchResults.length; i += 1) {
-    li = createElementWithDependencies(key, searchResults[i])
-    fragment.appendChild(li);
-  }
-
-  if (searchResults.length > 0) {
-    document.getElementById("result").appendChild(fragment);
-    document.getElementById("result").style.display = "block";
-  }
-}
-
-/**************************************************
-************* Search Input Controller *************
-***************************************************/
-
-function displaySearchResults(jsonObj) {
-  var searchResults = Models.createSearchResultsFromJsonArray(jsonObj);
-  showTextSearchResults(searchResults);
-  Map.highlightStates(searchResults);
-  Clear.enableClearIcon();
-}
-
-
-function queryMatching() { 
-  var key = document.getElementById("searchInput").value;
-
-  if (key.length >= 1) {
-    //Make AJAX Call
-    Info.getJSONArray(key, 'State', displaySearchResults);
-  }
-  else {
+  //Clear search input, disable clear icon, clear listed results, 
+  //and clear highlighted States on the map
+  function clearSearchInputAndMore() {
+    var el = document.getElementById("searchInput");
+    el.value = "";
+    el.focus();
+    Clear.disableClearIcon();
     List.clearListedResults();
     Map.clearHighlightedStates();
-    Clear.disableClearIcon();
   }
 
 
-}
+  //Display search results by showing Listed Results, Highlighting states,
+  //and enabling clear icon
+  function displaySearchResults(jsonObjArray) {
+    var searchResults = Models.createSearchResultsFromJsonArray(jsonObjArray);
+    List.showTextSearchResults(searchResults);
+    Map.highlightStates(searchResults);
+    Clear.enableClearIcon();
+  }
 
-// add event listener to input field
-document.getElementById("searchInput").addEventListener("input", queryMatching, false);
+  //On user input, query the server and display the matches
+  function queryAndDisplayOnUserInput() { 
+    var key = document.getElementById("searchInput").value;
 
+    if (key.length >= 1) {
+      //Make AJAX Call
+      AjaxHelper.getJSONArray(key, 'State', displaySearchResults);
+    }
+    else {
+      List.clearListedResults();
+      Map.clearHighlightedStates();
+      Clear.disableClearIcon();
+    }
+  }
 
-
-
+  // add event listener to input field
+  document.getElementById("searchInput").addEventListener("input", queryAndDisplayOnUserInput, false);
 
 })(this);

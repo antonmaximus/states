@@ -3,8 +3,6 @@ title: US States
 ---
 
 %header 
-  %nav
-    / %a{ href: "https://github.com/ayjaygit/states#readme", target: "_blank" } Anton's
   %h1 Find State Information
 
 %main 
@@ -12,6 +10,7 @@ title: US States
     %input#searchInput{ name:'searchInputName', type:'text', maxlength:20, tabindex:1, autofocus:true, autocomplete:"off", placeholder:'e.g., California'}
       .clearIconOff#clearIcon{ tabindex:2 }
       %ul#result
+  // Display Default Information
   %div.info
     %h1#stateName Texas
     = image_tag('./flags/texas.flag.png', id:'flag', alt:'Texas flag', title:'Texas flag')

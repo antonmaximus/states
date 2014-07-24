@@ -1,14 +1,14 @@
-/*------------------------------------*\
-    This updates the HTML elements on the information section
-\*------------------------------------*/
-
+/**************************************************
+*** INFORMATION CONTROLLER
+***
+*** Updates the Information displayed on the HTML.
+***************************************************/
 ;(function(global) {
   'use strict';
 
-  //Make the following local functions accessible outside the closure
+  //Export
   var Info = global.Info = global.Info || {};
   Info.updateInfo = updateInfo;
-  Info.getJSONArray = getJSONArray;
 
 
   //Update the html elements
@@ -29,29 +29,5 @@
       imgFlag.title = state.stateName;
     }
   }
-
-  
-
-  // AJAX
-function getJSONArray(key, field, callback) {
-  var parameters = "?input=" + key + "&field=" + field + "&t=" + Math.random(),
-      path = "./php/serverSideParser.php",
-      xhr = new XMLHttpRequest(),
-      jsonObj;
-
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) { //success
-        jsonObj = JSON.parse(xhr.responseText);
-        callback(jsonObj);
-      } else {
-        console.error(xhr);
-      }
-    }
-  };
-  xhr.open("GET", path + parameters, true);
-  xhr.send();
-}
-
 
 })(this);
