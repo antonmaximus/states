@@ -6,7 +6,7 @@ Fifty States
 
 **Author:** Anton
 
-**Demo:** [http://fiddystates.herokuapp.com/](http://fiddystates.herokuapp.com/)
+**Demo:** [fiddystates.herokuapp.com](http://fiddystates.herokuapp.com/)
 
 **Description:**
 
