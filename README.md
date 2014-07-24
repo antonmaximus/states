@@ -1,5 +1,7 @@
 Fifty States
 --------------
+*"Look Ma, No jQuery!"*
+
 
 
 **Author:** Anton
@@ -19,11 +21,11 @@ displayed results using a mouse click, up/down arrow key, or return key.
 
 
 Front-end: 
-Raw JavaScript (i.e., no jQuery), AJAX, HTML/HAML, CSS/SCSS, Responsive Design
+Raw JavaScript (i.e., no jQuery), AJAX, HTML/HAML, CSS/SCSS, SVG
 
 Back-end: 
 PHP, JSON
 
 Other:
-Middleman, Minification, Autoprefixer, Amazon EC2
+MVC Framework, Responsive Design, Heroku, Middleman
 
