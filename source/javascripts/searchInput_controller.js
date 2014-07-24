@@ -4,6 +4,7 @@
 *** Handles user's keyboard input.
 *** Valid input are return, ESC, down arrow, and up arrow keys.
 ***************************************************/
+
 ;(function(global) {
   'use strict';
 

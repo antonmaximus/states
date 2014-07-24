@@ -3,6 +3,7 @@
 ***
 *** Display/Undisplay clear 'x' icon on Search Input.
 ***************************************************/
+
 ;(function(global) {
   'use strict';
   //Dependencies and Imports

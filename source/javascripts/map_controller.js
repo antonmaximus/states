@@ -3,6 +3,7 @@
 ***
 *** Controls the display of states on the SVG map.
 ***************************************************/
+
 ;(function(global) {
   'use strict';
   //Dependencies and Import

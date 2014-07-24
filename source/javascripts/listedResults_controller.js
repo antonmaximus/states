@@ -3,6 +3,7 @@
 ***
 *** Displays/undisplay the Listed Results.
 ***************************************************/
+
 ;(function(global) {
   'use strict';
   //Dependencies and Import

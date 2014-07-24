@@ -3,6 +3,7 @@
 ***
 *** Updates the Information displayed on the HTML.
 ***************************************************/
+
 ;(function(global) {
   'use strict';
 
