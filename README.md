@@ -15,8 +15,11 @@ This web application shows information for any of the 50 US states.
 When a user types in on the search input, the JavaScript
 code will make an AJAX request to the server.  The PHP server will find 
 corresponding matches from its JSON file and return the results to the 
-client-side to be displayed on the screent.  The user can then choose from the
+client-side to be displayed on the screen.  The user can then choose from the
 displayed results using a mouse click, up/down arrow key, or return key.
+
+In addition, the user can also directly click on a state in the image.  This
+will provide the information of the state right away.
 
 
 **Technologies Used:**
