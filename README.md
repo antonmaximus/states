@@ -21,6 +21,9 @@ displayed results using a mouse click, up/down arrow key, or return key.
 In addition, the user can also directly click on a state in the image.  This
 will provide the information of the state right away.
 
+Some features of the app include: dynamic text bolding for input match, real-time
+map highlights for matching entries, and a clear icon independent of browser.
+
 
 **Technologies Used:**
 
